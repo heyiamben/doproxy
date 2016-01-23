@@ -47,5 +47,5 @@ defaults
 
 	backend www-backend
 	   <% @droplets.each_with_index do |droplet, index| %>
-	   server www-<%= droplet.id %> <%= droplet.private_ip %>:80 check # id:<%= droplet.id %>, hostname:<%= droplet.name -%>
+	   server www-<%= droplet.id %> <%= droplet.private_ip %>:80 cookie www-<%= droplet.id %> check # id:<%= droplet.id %>, hostname:<%= droplet.name -%>
 	   <% end %>
