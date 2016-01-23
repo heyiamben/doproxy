@@ -46,6 +46,8 @@ defaults
 	   default_backend www-backend
 
 	backend www-backend
+	   balance roundrobin
+  	   cookie SERVERID insert indirect nocache
 	   <% @droplets.each_with_index do |droplet, index| %>
 	   server www-<%= droplet.id %> <%= droplet.private_ip %>:80 cookie www-<%= droplet.id %> check # id:<%= droplet.id %>, hostname:<%= droplet.name -%>
 	   <% end %>
